@@ -131,9 +131,9 @@ try {
     }
     out.println("</table></font>");
 
-    // Add recommendations randomly from recent product purchases catagories
+      // Add recommendations randomly from recent product purchases categories
     if (authenticatedUser != null) {
-        String recommendationSql = "SELECT TOP 3 P.productId, P.productName, P.productPrice, P.productImageURL "
+        String recommendationSql = "SELECT TOP 3 P.productId, P.productName, P.productPrice, P.productImageURL, C.categoryName "
             + "FROM Product P "
             + "JOIN Category C ON P.categoryId = C.categoryId "
             + "WHERE C.categoryId IN ("
@@ -151,20 +151,26 @@ try {
         ResultSet recommendationRst = recommendationPstmt.executeQuery();
 
         out.println("<h3>Recommended for You</h3>");
-        out.println("<table class=\"table\" border=\"1\"><tr><th>Image</th><th>Product Name</th><th>Price</th></tr>");
+        out.println("<table class=\"table\" border=\"1\"><tr><th>Add to Cart</th><th>Image</th><th>Product Name</th><th>Price</th></tr>");
         while (recommendationRst.next()) {
+            int recId = recommendationRst.getInt("productId");
             String recImage = recommendationRst.getString("productImageURL");
             String recName = recommendationRst.getString("productName");
+            String recCategory = recommendationRst.getString("categoryName");
             double recPrice = recommendationRst.getDouble("productPrice");
+            String recColor = colors.getOrDefault(recCategory, "#FFFFFF");
 
             out.println("<tr>");
+            out.println("<td><a href='addcart.jsp?id=" + recId + "&name=" + recName + "&price=" + recPrice + "'>Add to Cart</a></td>");
             out.println("<td><img src='" + recImage + "' alt='" + recName + "' style='width:100px; height:auto;'></td>");
-            out.println("<td>" + recName + "</td>");
-            out.println("<td>" + currFormat.format(recPrice) + "</td>");
+            out.println("<td><font color=\"" + recColor + "\">" + recName + "</font></td>");
+            out.println("<td><font color=\"" + recColor + "\">" + currFormat.format(recPrice) + "</font></td>");
             out.println("</tr>");
         }
         out.println("</table>");
     }
+
+
 
     closeConnection();
 } catch (SQLException ex) {

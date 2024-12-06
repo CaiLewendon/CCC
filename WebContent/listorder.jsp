@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<%@ include file="header.jsp" %>
+
 <h1>Order List</h1>
 
 <%

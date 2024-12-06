@@ -4,7 +4,8 @@
 %>
 <H1 align="center">
     <font face="cursive" color="#3399FF">
-        <a href="index.jsp">Ray's Grocery</a>
+        <!-- Changed the link to listprod.jsp -->
+        <a href="listprod.jsp">Cai & Charlie's Car Shop</a>
     </font>
 </H1>
 <%
@@ -28,6 +29,10 @@
     }
 %>
 <div align="center">
+    <!-- Button for Options Menu -->
+    <form method="get" action="index.jsp" style="display:inline;">
+        <button type="submit" class="btn btn-info">Options Menu</button>
+    </form>
     <!-- Button for Shopping Cart -->
     <form method="get" action="<%= (authenticatedUser != null) ? "showcart.jsp" : "login.jsp" %>" style="display:inline;">
         <button type="submit" class="btn btn-primary">Go to Shopping Cart</button>

@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<%@ include file="header.jsp" %>
+
 <%
 // Get the current list of products
 @SuppressWarnings({"unchecked"})

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Cai & Charlie's Car Shop Main Page</title>
+        <%@ include file="header.jsp" %>
 </head>
 <body>
-<h1 align="center">Welcome to Cai & Charlie's Car Shop</h1>
 
 <h2 align="center"><a href="login.jsp">Login</a></h2>
 

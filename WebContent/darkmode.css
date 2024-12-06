@@ -1,0 +1,368 @@
+/* Base styles for dark mode */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+}
+
+/* Links */
+a {
+    color: #64b5f6;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #42a5f5;
+    text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+/* Specific button colors (Bootstrap overrides) */
+.btn-primary {
+    background-color: #1a73e8;
+    border-color: #145dbf;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #145dbf;
+    border-color: #0d47a1;
+}
+
+.btn-success {
+    background-color: #388e3c;
+    border-color: #2e7d32;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #2e7d32;
+}
+
+.btn-info {
+    background-color: #0288d1;
+    border-color: #0277bd;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #0277bd;
+}
+
+.btn-warning {
+    background-color: #ffa000;
+    border-color: #ff8f00;
+    color: #fff;
+}
+
+.btn-warning:hover {
+    background-color: #ff8f00;
+}
+
+.btn-danger {
+    background-color: #d32f2f;
+    border-color: #c62828;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c62828;
+}
+
+.btn-secondary {
+    background-color: #616161;
+    border-color: #424242;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #424242;
+}
+
+/* Inputs and textareas */
+input, select, textarea {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #64b5f6;
+    background-color: #2e2e2e;
+    outline: none;
+}
+
+/* Form control feedback */
+.form-control-feedback {
+    color: #64b5f6;
+}
+
+/* Tables */
+.table {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444; /* Border for the table */
+}
+
+.table th {
+    background-color: #333; /* Darker header background */
+    color: #ffffff; /* Light text for headers */
+    border: 1px solid #444; /* Header border */
+    text-align: center; /* Center-align header text */
+    padding: 10px;
+}
+
+.table td {
+    background-color: #1e1e1e; /* Cell background color */
+    color: #e0e0e0; /* Cell text color */
+    border: 1px solid #444; /* Cell border */
+    text-align: center;
+    padding: 10px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #2e2e2e; /* Slightly lighter row background */
+    color: #ffffff; /* Keep text visible */
+}
+
+/* Totals row */
+.table tfoot td {
+    background-color: #333; /* Match header background */
+    color: #ffffff; /* Totals row text color */
+    font-weight: bold;
+    border-top: 2px solid #555; /* Separate totals row */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #444;
+}
+
+.navbar a {
+    color: #e0e0e0;
+}
+
+.navbar a:hover {
+    color: #64b5f6;
+}
+
+/* Cards */
+.card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Report container */
+.report-container {
+    background-color: #1e1e1e; /* Match dark mode background */
+    color: #e0e0e0; /* Match text color */
+    border: 1px solid #444; /* Match dark mode table border */
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Headers */
+.report-header, .customer-header {
+    text-align: center;
+    color: #64b5f6; /* Match link hover color for headers */
+    margin-bottom: 20px;
+}
+
+/* Miscellaneous */
+hr {
+    border-top: 1px solid #444;
+}
+
+code, pre {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    padding: 10px;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Adjustments for responsive elements */
+@media (max-width: 768px) {
+    .btn {
+        font-size: 0.9em;
+    }
+}
+
+/* Profile Container */
+.profile-container {
+    margin-top: 50px;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #444; /* Match dark mode border */
+    border-radius: 10px;
+    background-color: #1e1e1e; /* Dark mode background */
+    color: #e0e0e0; /* Light text color for readability */
+}
+
+/* Profile Header */
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #64b5f6; /* Header color to match dark mode link hover */
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Profile Table */
+.profile-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.profile-table th, .profile-table td {
+    padding: 10px;
+    border: 1px solid #444; /* Dark mode border */
+    text-align: left;
+}
+
+.profile-table th {
+    background-color: #333; /* Darker background for table headers */
+    color: #ffffff; /* Light text for table headers */
+    font-weight: bold;
+}
+
+.profile-table td {
+    background-color: #1e1e1e; /* Match table row background with container */
+    color: #e0e0e0; /* Light text for table content */
+}
+
+/* Hover Effect for Rows */
+.profile-table tbody tr:hover {
+    background-color: #2e2e2e; /* Slightly lighter background for hover effect */
+}
+
+/* Login Container */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #444; /* Dark mode border */
+    border-radius: 10px;
+    background-color: #1e1e1e; /* Dark mode background */
+    color: #e0e0e0; /* Light text for better readability */
+}
+
+/* Login Header */
+.login-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #64b5f6; /* Match dark mode header color */
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Error Message */
+.error-message {
+    color: #ff6b6b; /* Light red for better visibility in dark mode */
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold; /* Make error messages stand out */
+}
+
+
+/* Checkout Container */
+.checkout-container {
+    margin-top: 50px;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #444; /* Dark mode border */
+    border-radius: 10px;
+    background-color: #1e1e1e; /* Dark mode background */
+    color: #e0e0e0; /* Light text for readability */
+}
+
+/* Checkout Header */
+.checkout-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #64b5f6; /* Consistent with other headers in dark mode */
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Form Group Input (Text) */
+.form-group input[type="text"] {
+    width: 100%;
+    background-color: #1e1e1e; /* Match container background */
+    color: #e0e0e0; /* Light text for better visibility */
+    border: 1px solid #444; /* Subtle border for dark mode */
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-group input[type="text"]:focus {
+    border-color: #64b5f6; /* Highlight on focus */
+    background-color: #2e2e2e; /* Slightly lighter for focus state */
+    outline: none;
+}
+
+/* Button Group */
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-group .btn {
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #333; /* Button background */
+    color: #fff; /* Button text */
+    border: 1px solid #444; /* Button border */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-group .btn:hover {
+    background-color: #555; /* Slightly lighter on hover */
+    color: #fff;
+}
+
+/* Specific Button Colors */
+.btn-group .btn-primary {
+    background-color: #1a73e8;
+    border-color: #145dbf;
+}
+
+.btn-group .btn-primary:hover {
+    background-color: #145dbf;
+    border-color: #0d47a1;
+}
+
+.btn-group .btn-secondary {
+    background-color: #616161;
+    border-color: #424242;
+}
+
+.btn-group .btn-secondary:hover {
+    background-color: #424242;
+}

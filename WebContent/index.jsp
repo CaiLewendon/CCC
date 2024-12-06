@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Ray's Grocery Main Page</title>
+    <title>Cai & Charlie's Car Shop - Main Page</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .main-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .action-links a {
+            display: block;
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+        .welcome-message {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-<h1 align="center">Welcome to Ray's Grocery</h1>
 
-<h2 align="center"><a href="login.jsp">Login</a></h2>
+<%@ include file="header.jsp" %>
 
-<h2 align="center"><a href="listprod.jsp">Begin Shopping</a></h2>
+<div class="container main-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="action-links">
+                <a href="login.jsp" class="btn btn-primary btn-lg">Login</a>
+                <a href="listprod.jsp" class="btn btn-success btn-lg">Begin Shopping</a>
+                <a href="listorder.jsp" class="btn btn-info btn-lg">List All Orders</a>
+                <a href="customer.jsp" class="btn btn-warning btn-lg">Customer Info</a>
+                <a href="admin.jsp" class="btn btn-danger btn-lg">Administrators</a>
+                <a href="logout.jsp" class="btn btn-secondary btn-lg">Log Out</a>
+            </div>
+            <%
+                String userName = (String) session.getAttribute("authenticatedUser");
+                if (userName != null) {
+            %>
+                <div class="welcome-message">
+                    Signed in as: <strong><%= userName %></strong>
+                </div>
+            <%
+                }
+            %>
+        </div>
+    </div>
+</div>
 
-<h2 align="center"><a href="listorder.jsp">List All Orders</a></h2>
-
-<h2 align="center"><a href="customer.jsp">Customer Info</a></h2>
-
-<h2 align="center"><a href="admin.jsp">Administrators</a></h2>
-
-<h2 align="center"><a href="logout.jsp">Log out</a></h2>
-
-<%
-	String userName = (String) session.getAttribute("authenticatedUser");
-	if (userName != null)
-		out.println("<h3 align=\"center\">Signed in as: "+userName+"</h3>");
-%>
 </body>
-</head>
-
-
+</html>

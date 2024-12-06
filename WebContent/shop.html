@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Ray's Grocery Main Page</title>
+    <title>Cai & Charlie's Car Shop Main Page</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        .main-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .welcome-title {
+            font-family: 'Arial', sans-serif;
+            font-size: 2.5em;
+            color: #ffffff;
+        }
+        .action-links a {
+            display: block;
+            margin: 15px 0;
+            font-size: 1.5em;
+        }
+    </style>
+    <link href="darkmode.css" rel="stylesheet">
 </head>
 <body>
-<h1 align="center">Welcome to Ray's Grocery</h1>
 
-<h2 align="center"><a href="listprod.jsp">Begin Shopping</a></h2>
 
-<h2 align="center"><a href="listorder.jsp">List All Orders</a></h2>
+<div class="container main-container">
+    <h1 class="welcome-title">Welcome to Cai & Charlie's Car Shop</h1>
+    <div class="action-links">
+        <a href="listprod.jsp" class="btn btn-primary btn-lg">Continue Shopping</a>
+        <a href="listorder.jsp" class="btn btn-secondary btn-lg">List All Orders</a>
+    </div>
+</div>
 
 </body>
-</head>
-
-
+</html>

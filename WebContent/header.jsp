@@ -3,7 +3,7 @@
     String authenticatedUser = (String) session.getAttribute("authenticatedUser");
 %>
 <H1 align="center">
-    <font face="cursive" color="#3399FF">
+    <font face="Segoe UI Symbol" color="#3399FF">
         <!-- Changed the link to listprod.jsp -->
         <a href="listprod.jsp">Cai & Charlie's Car Shop</a>
     </font>

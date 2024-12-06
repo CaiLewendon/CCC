@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login Screen</title>
+    <title>Login Screen</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="margin:0 auto;text-align:center;display:inline">
+<div class="login-container">
+    <h3 class="login-header">Please Login to System</h3>
 
-<h3>Please Login to System</h3>
+    <%
+    // Display error message if login failed
+    if (session.getAttribute("loginMessage") != null) {
+    %>
+        <div class="error-message">
+            <%= session.getAttribute("loginMessage").toString() %>
+        </div>
+    <%
+    }
+    %>
 
-<%
-// Print prior error login message if present
-if (session.getAttribute("loginMessage") != null)
-	out.println("<p>"+session.getAttribute("loginMessage").toString()+"</p>");
-%>
-
-<br>
-<form name="MyForm" method=post action="validateLogin.jsp">
-<table style="display:inline">
-<tr>
-	<td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">Username:</font></div></td>
-	<td><input type="text" name="username"  size=10 maxlength=10></td>
-</tr>
-<tr>
-	<td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">Password:</font></div></td>
-	<td><input type="password" name="password" size=10 maxlength="10"></td>
-</tr>
-</table>
-<br/>
-<input class="submit" type="submit" name="Submit2" value="Log In">
-</form>
-
+    <form name="MyForm" method="post" action="validateLogin.jsp">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" class="form-control" maxlength="10" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" class="form-control" maxlength="10" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Log In</button>
+    </form>
 </div>
 
 </body>
 </html>
-

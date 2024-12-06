@@ -22,6 +22,7 @@
             margin-bottom: 15px;
         }
     </style>
+	<link href="darkmode.css" rel="stylesheet">
 </head>
 <body>
 

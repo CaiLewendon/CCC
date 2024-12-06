@@ -27,7 +27,6 @@
 <div class="container main-container">
     <div class="row">
         <div class="col-md-12">
-            <h2 class="mb-4">Welcome to Cai & Charlie's Car Shop</h2>
             <div class="action-links">
                 <a href="login.jsp" class="btn btn-primary btn-lg">Login</a>
                 <a href="listprod.jsp" class="btn btn-success btn-lg">Begin Shopping</a>

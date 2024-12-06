@@ -209,3 +209,160 @@ code, pre {
         font-size: 0.9em;
     }
 }
+
+/* Profile Container */
+.profile-container {
+    margin-top: 50px;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #444; /* Match dark mode border */
+    border-radius: 10px;
+    background-color: #1e1e1e; /* Dark mode background */
+    color: #e0e0e0; /* Light text color for readability */
+}
+
+/* Profile Header */
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #64b5f6; /* Header color to match dark mode link hover */
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Profile Table */
+.profile-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.profile-table th, .profile-table td {
+    padding: 10px;
+    border: 1px solid #444; /* Dark mode border */
+    text-align: left;
+}
+
+.profile-table th {
+    background-color: #333; /* Darker background for table headers */
+    color: #ffffff; /* Light text for table headers */
+    font-weight: bold;
+}
+
+.profile-table td {
+    background-color: #1e1e1e; /* Match table row background with container */
+    color: #e0e0e0; /* Light text for table content */
+}
+
+/* Hover Effect for Rows */
+.profile-table tbody tr:hover {
+    background-color: #2e2e2e; /* Slightly lighter background for hover effect */
+}
+
+/* Login Container */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #444; /* Dark mode border */
+    border-radius: 10px;
+    background-color: #1e1e1e; /* Dark mode background */
+    color: #e0e0e0; /* Light text for better readability */
+}
+
+/* Login Header */
+.login-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #64b5f6; /* Match dark mode header color */
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Error Message */
+.error-message {
+    color: #ff6b6b; /* Light red for better visibility in dark mode */
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold; /* Make error messages stand out */
+}
+
+
+/* Checkout Container */
+.checkout-container {
+    margin-top: 50px;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #444; /* Dark mode border */
+    border-radius: 10px;
+    background-color: #1e1e1e; /* Dark mode background */
+    color: #e0e0e0; /* Light text for readability */
+}
+
+/* Checkout Header */
+.checkout-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #64b5f6; /* Consistent with other headers in dark mode */
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Form Group Input (Text) */
+.form-group input[type="text"] {
+    width: 100%;
+    background-color: #1e1e1e; /* Match container background */
+    color: #e0e0e0; /* Light text for better visibility */
+    border: 1px solid #444; /* Subtle border for dark mode */
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-group input[type="text"]:focus {
+    border-color: #64b5f6; /* Highlight on focus */
+    background-color: #2e2e2e; /* Slightly lighter for focus state */
+    outline: none;
+}
+
+/* Button Group */
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-group .btn {
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #333; /* Button background */
+    color: #fff; /* Button text */
+    border: 1px solid #444; /* Button border */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-group .btn:hover {
+    background-color: #555; /* Slightly lighter on hover */
+    color: #fff;
+}
+
+/* Specific Button Colors */
+.btn-group .btn-primary {
+    background-color: #1a73e8;
+    border-color: #145dbf;
+}
+
+.btn-group .btn-primary:hover {
+    background-color: #145dbf;
+    border-color: #0d47a1;
+}
+
+.btn-group .btn-secondary {
+    background-color: #616161;
+    border-color: #424242;
+}
+
+.btn-group .btn-secondary:hover {
+    background-color: #424242;
+}

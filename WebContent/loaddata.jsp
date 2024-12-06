@@ -14,7 +14,7 @@ out.print("<h1>Connecting to database.</h1><br><br>");
 
 getConnection();
         
-String fileName = "/usr/local/tomcat/webapps/shop/ddl/orderdb_sql.ddl";
+String fileName = "/usr/local/tomcat/webapps/shop/ddl/orderdb_sql_cars.ddl";
 
 try
 {

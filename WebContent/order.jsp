@@ -172,7 +172,7 @@
                     <h2>Shipping to customer: <%= custId %>, Name: <%= custName %></h2>
                 </div>
                 <div class="return-link">
-                    <a href="shop.html" class="btn btn-primary btn-lg">Return to Shopping</a>
+                    <a href="listprod.jsp" class="btn btn-primary btn-lg">Return to Shopping</a>
                 </div>
     <%
                 // Update order total

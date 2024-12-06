@@ -161,16 +161,17 @@ INSERT INTO product(productName, productDesc, categoryId, productPrice) VALUES (
 INSERT INTO product(productName, productDesc, categoryId, productPrice) VALUES ('Leaf', 'Compact Electric Car', 5, 29999);
 
 INSERT INTO warehouse(warehouseName) VALUES ('Main warehouse');
+INSERT INTO warehouse(warehouseName) VALUES ('Extra warehouse');
 INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (1, 1, 5, 79999);
 INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (2, 1, 10, 24999);
 INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (3, 1, 3, 99999);
 INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (4, 1, 2, 32999);
 INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (5, 1, 6, 28999);
 INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (6, 1, 3, 49999);
-INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (7, 1, 1, 9999);
-INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (8, 1, 0, 15499);
-INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (9, 1, 2, 39999);
-INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (10, 1, 3, 29999);
+INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (7, 2, 1, 9999);
+INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (8, 2, 0, 15499);
+INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (9, 2, 2, 39999);
+INSERT INTO productinventory(productId, warehouseId, quantity, price) VALUES (10, 2, 3, 29999);
 
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES ('Arnold', 'Anderson', 'a.anderson@gmail.com', '204-111-2222', '103 AnyWhere Street', 'Winnipeg', 'MB', 'R3X 45T', 'Canada', 'arnold' , 'test');
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES ('Bobby', 'Brown', 'bobby.brown@hotmail.ca', '572-342-8911', '222 Bush Avenue', 'Boston', 'MA', '22222', 'United States', 'bobby' , 'bobby');

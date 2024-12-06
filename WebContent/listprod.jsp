@@ -68,23 +68,50 @@ if (hasNameParam && hasCategoryParam)
 {
 	filter = "<h3>Products containing '"+name+"' in category: '"+category+"'</h3>";
 	name = '%'+name+'%';
-	sql = "SELECT productId, productName, productPrice, categoryName, productImageURL FROM Product P JOIN Category C ON P.categoryId = C.categoryId WHERE productName LIKE ? AND categoryName = ?";
+	sql = "SELECT P.productId, P.productName, P.productPrice, C.categoryName, P.productImageURL, "
+	    + "COALESCE(SUM(OP.quantity), 0) AS totalSales "
+	    + "FROM Product P "
+	    + "LEFT JOIN OrderProduct OP ON P.productId = OP.productId "
+	    + "JOIN Category C ON P.categoryId = C.categoryId "
+	    + "WHERE P.productName LIKE ? AND C.categoryName = ? "
+	    + "GROUP BY P.productId, P.productName, P.productPrice, C.categoryName, P.productImageURL "
+	    + "ORDER BY totalSales DESC";
 }
 else if (hasNameParam)
 {
 	filter = "<h3>Products containing '"+name+"'</h3>";
 	name = '%'+name+'%';
-	sql = "SELECT productId, productName, productPrice, categoryName, productImageURL FROM Product P JOIN Category C ON P.categoryId = C.categoryId WHERE productName LIKE ?";
+	sql = "SELECT P.productId, P.productName, P.productPrice, C.categoryName, P.productImageURL, "
+	    + "COALESCE(SUM(OP.quantity), 0) AS totalSales "
+	    + "FROM Product P "
+	    + "LEFT JOIN OrderProduct OP ON P.productId = OP.productId "
+	    + "JOIN Category C ON P.categoryId = C.categoryId "
+	    + "WHERE P.productName LIKE ? "
+	    + "GROUP BY P.productId, P.productName, P.productPrice, C.categoryName, P.productImageURL "
+	    + "ORDER BY totalSales DESC";
 }
 else if (hasCategoryParam)
 {
 	filter = "<h3>Products in category: '"+category+"'</h3>";
-	sql = "SELECT productId, productName, productPrice, categoryName, productImageURL FROM Product P JOIN Category C ON P.categoryId = C.categoryId WHERE categoryName = ?";
+	sql = "SELECT P.productId, P.productName, P.productPrice, C.categoryName, P.productImageURL, "
+	    + "COALESCE(SUM(OP.quantity), 0) AS totalSales "
+	    + "FROM Product P "
+	    + "LEFT JOIN OrderProduct OP ON P.productId = OP.productId "
+	    + "JOIN Category C ON P.categoryId = C.categoryId "
+	    + "WHERE C.categoryName = ? "
+	    + "GROUP BY P.productId, P.productName, P.productPrice, C.categoryName, P.productImageURL "
+	    + "ORDER BY totalSales DESC";
 }
 else
 {
 	filter = "<h3>All Products</h3>";
-	sql = "SELECT productId, productName, productPrice, categoryName, productImageURL FROM Product P JOIN Category C ON P.categoryId = C.categoryId";
+	sql = "SELECT P.productId, P.productName, P.productPrice, C.categoryName, P.productImageURL, "
+	    + "COALESCE(SUM(OP.quantity), 0) AS totalSales "
+	    + "FROM Product P "
+	    + "LEFT JOIN OrderProduct OP ON P.productId = OP.productId "
+	    + "JOIN Category C ON P.categoryId = C.categoryId "
+	    + "GROUP BY P.productId, P.productName, P.productPrice, C.categoryName, P.productImageURL "
+	    + "ORDER BY totalSales DESC";
 }
 
 out.println(filter);
@@ -114,11 +141,12 @@ try
 	ResultSet rst = pstmt.executeQuery();
 	
 	out.print("<font face=\"Century Gothic\" size=\"2\"><table class=\"table\" border=\"1\"><tr><th class=\"col-md-1\"></th><th>Image</th><th>Product Name</th>");
-	out.println("<th>Category</th><th>Price</th></tr>");
+	out.println("<th>Category</th><th>Price</th><th>Total Sales</th></tr>");
 	while (rst.next()) 
 	{
 		int id = rst.getInt(1);
 		String imageUrl = rst.getString(5); // Fetch the image URL
+		int totalSales = rst.getInt(6); // Fetch total sales
 
 		out.print("<td class=\"col-md-1\"><a href=\"addcart.jsp?id=" + id + "&name=" + rst.getString(2)
 				+ "&price=" + rst.getDouble(3) + "\">Add to Cart</a></td>");
@@ -132,7 +160,8 @@ try
 		out.println("<td><a href=\"product.jsp?id="+id+"\"<font color=\"" + color + "\">" + rst.getString(2) + "</font></td>"
 				+ "<td><font color=\"" + color + "\">" + itemCategory + "</font></td>"
 				+ "<td><font color=\"" + color + "\">" + currFormat.format(rst.getDouble(3))
-				+ "</font></td></tr>");
+				+ "</font></td>"
+				+ "<td align=\"center\">" + totalSales + "</td></tr>");
 	}
 	out.println("</table></font>");
 	closeConnection();

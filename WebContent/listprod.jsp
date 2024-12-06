@@ -43,7 +43,7 @@
     HashMap<String, String> colors = new HashMap<>();
     colors.put("Sedan", "#0000FF");
     colors.put("SUV", "#FF0000");
-    colors.put("Truck", "#000000");
+    colors.put("Truck", "#FFFAAA");
     colors.put("Motorcycle", "#6600CC");
     colors.put("Electric Vehicle", "#55A5B3");
 
@@ -162,24 +162,28 @@
             ResultSet recommendationRst = recommendationPstmt.executeQuery();
 
             out.println("<h3 class='mt-5'>Recommended for You</h3>");
-            out.println("<table class=\"table table-bordered table-striped mt-3\">"
-                    + "<thead class=\"thead-dark\"><tr><th>Add to Cart</th><th>Image</th><th>Product Name</th><th>Price</th></tr></thead>");
-            out.println("<tbody>");
-            while (recommendationRst.next()) {
-                int recId = recommendationRst.getInt("productId");
-                String recImage = recommendationRst.getString("productImageURL");
-                String recName = recommendationRst.getString("productName");
-                double recPrice = recommendationRst.getDouble("productPrice");
+			out.println("<table class=\"table table-bordered table-striped mt-3\">"
+        		+ "<thead class=\"thead-dark\"><tr><th>Add to Cart</th><th>Image</th><th>Product Name</th><th>Price</th></tr></thead>");
+			out.println("<tbody>");
+			while (recommendationRst.next()) {
+			int recId = recommendationRst.getInt("productId");
+			String recImage = recommendationRst.getString("productImageURL");
+			String recName = recommendationRst.getString("productName");
+			String recCategory = recommendationRst.getString("categoryName");
+			double recPrice = recommendationRst.getDouble("productPrice");
 
-                out.println("<tr>");
-                out.println("<td><a href='addcart.jsp?id=" + recId + "&name=" + recName + "&price=" + recPrice
-                        + "' class='btn btn-primary btn-sm'>Add to Cart</a></td>");
-                out.println("<td><img src='" + recImage + "' alt='" + recName + "' class='img-thumbnail' style='width:100px;'></td>");
-                out.println("<td>" + recName + "</td>");
-                out.println("<td>" + currFormat.format(recPrice) + "</td>");
-                out.println("</tr>");
-            }
-            out.println("</tbody></table>");
+			// Fetch the color based on category
+			String color = colors.getOrDefault(recCategory, "#FFFFFF"); // Default to white if no match
+
+			out.println("<tr>");
+			out.println("<td><a href='addcart.jsp?id=" + recId + "&name=" + recName + "&price=" + recPrice
+					+ "' class='btn btn-primary btn-sm'>Add to Cart</a></td>");
+			out.println("<td><img src='" + recImage + "' alt='" + recName + "' class='img-thumbnail' style='width:100px;'></td>");
+			out.println("<td><span style='color:" + color + ";'>" + recName + "</span></td>"); // Apply color to the product name
+			out.println("<td>" + currFormat.format(recPrice) + "</td>");
+			out.println("</tr>");
+				}
+			out.println("</tbody></table>");
         }
 
         closeConnection();

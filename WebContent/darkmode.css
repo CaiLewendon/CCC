@@ -174,6 +174,22 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Report container */
+.report-container {
+    background-color: #1e1e1e; /* Match dark mode background */
+    color: #e0e0e0; /* Match text color */
+    border: 1px solid #444; /* Match dark mode table border */
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Headers */
+.report-header, .customer-header {
+    text-align: center;
+    color: #64b5f6; /* Match link hover color for headers */
+    margin-bottom: 20px;
+}
+
 /* Miscellaneous */
 hr {
     border-top: 1px solid #444;

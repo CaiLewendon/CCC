@@ -92,7 +92,7 @@
                 String getWarehouseId = rst.getString(1);
                 String getWarehouseName = rst.getString(2);
 
-                out.println("<h4>Warehouse: " + getWarehouseName + "</h4>");
+                out.println("<h4>" + getWarehouseName + "</h4>");
                 out.println("<table class=\"table inventory-table\">");
                 out.println("<tr><th>Product ID</th><th>Product Name</th><th>Quantity</th><th>Price</th><th>Action</th></tr>");
 

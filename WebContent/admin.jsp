@@ -73,6 +73,8 @@
 <%@ include file="header.jsp" %>
 
 <div class="container report-container">
+        <!-- Button to navigate to warehouse.jsp -->
+    
     <h1 class="report-header">Administrator Sales Report by Day</h1>
 
     <%
@@ -118,6 +120,10 @@
             closeConnection();
         }
     %>
+
+    <div class="mb-4 text-center">
+        <a href="warehouse.jsp" class="btn btn-primary">Go to Warehouse Inventory</a>
+    </div>
 
     <div class="graph-container">
         <h2 class="report-header">Sales Report Graph</h2>

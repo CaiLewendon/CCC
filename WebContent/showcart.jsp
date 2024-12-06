@@ -50,6 +50,7 @@
                 </div>
             <%
                 productList = new HashMap<String, ArrayList<Object>>();
+				session.setAttribute("productList", productList); // Ensure it is initialized only once
             } else {
                 NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
             %>

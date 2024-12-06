@@ -43,3 +43,4 @@
     </form>
 </div>
 <hr>
+<link href="darkmode.css" rel="stylesheet">

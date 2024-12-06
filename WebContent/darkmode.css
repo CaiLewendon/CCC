@@ -1,0 +1,195 @@
+/* Base styles for dark mode */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+}
+
+/* Links */
+a {
+    color: #64b5f6;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #42a5f5;
+    text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+/* Specific button colors (Bootstrap overrides) */
+.btn-primary {
+    background-color: #1a73e8;
+    border-color: #145dbf;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #145dbf;
+    border-color: #0d47a1;
+}
+
+.btn-success {
+    background-color: #388e3c;
+    border-color: #2e7d32;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #2e7d32;
+}
+
+.btn-info {
+    background-color: #0288d1;
+    border-color: #0277bd;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #0277bd;
+}
+
+.btn-warning {
+    background-color: #ffa000;
+    border-color: #ff8f00;
+    color: #fff;
+}
+
+.btn-warning:hover {
+    background-color: #ff8f00;
+}
+
+.btn-danger {
+    background-color: #d32f2f;
+    border-color: #c62828;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c62828;
+}
+
+.btn-secondary {
+    background-color: #616161;
+    border-color: #424242;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #424242;
+}
+
+/* Inputs and textareas */
+input, select, textarea {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #64b5f6;
+    background-color: #2e2e2e;
+    outline: none;
+}
+
+/* Form control feedback */
+.form-control-feedback {
+    color: #64b5f6;
+}
+
+/* Tables */
+.table {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444; /* Border for the table */
+}
+
+.table th {
+    background-color: #333; /* Darker header background */
+    color: #ffffff; /* Light text for headers */
+    border: 1px solid #444; /* Header border */
+    text-align: center; /* Center-align header text */
+    padding: 10px;
+}
+
+.table td {
+    background-color: #1e1e1e; /* Cell background color */
+    color: #e0e0e0; /* Cell text color */
+    border: 1px solid #444; /* Cell border */
+    text-align: center;
+    padding: 10px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #2e2e2e; /* Slightly lighter row background */
+    color: #ffffff; /* Keep text visible */
+}
+
+/* Totals row */
+.table tfoot td {
+    background-color: #333; /* Match header background */
+    color: #ffffff; /* Totals row text color */
+    font-weight: bold;
+    border-top: 2px solid #555; /* Separate totals row */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #444;
+}
+
+.navbar a {
+    color: #e0e0e0;
+}
+
+.navbar a:hover {
+    color: #64b5f6;
+}
+
+/* Cards */
+.card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Miscellaneous */
+hr {
+    border-top: 1px solid #444;
+}
+
+code, pre {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    padding: 10px;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Adjustments for responsive elements */
+@media (max-width: 768px) {
+    .btn {
+        font-size: 0.9em;
+    }
+}

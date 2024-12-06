@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ray's Grocery CheckOut Line</title>
+<title>Cai & Charlie's Car Shop CheckOut Line</title>
 </head>
 <body>
 

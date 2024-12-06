@@ -18,7 +18,6 @@
     </p>
 <%
     } else {
-        // Display a generic message if no user is logged in
 %>
     <p align="center">
         <font face="Arial" color="#555555" size="4">
@@ -28,4 +27,14 @@
 <%
     }
 %>
+<div align="center">
+    <!-- Button for Shopping Cart -->
+    <form method="get" action="<%= (authenticatedUser != null) ? "showcart.jsp" : "login.jsp" %>" style="display:inline;">
+        <button type="submit" class="btn btn-primary">Go to Shopping Cart</button>
+    </form>
+    <!-- Button for Customer Profile -->
+    <form method="get" action="<%= (authenticatedUser != null) ? "customer.jsp" : "login.jsp" %>" style="display:inline;">
+        <button type="submit" class="btn btn-secondary">View Profile</button>
+    </form>
+</div>
 <hr>

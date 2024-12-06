@@ -3,7 +3,10 @@
 <head>
     <title>Administrator Page</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
     <%@ page import="java.text.NumberFormat" %>
+    <%@ page import="java.util.ArrayList" %>
+    <%@ page import="java.util.List" %>
     <style>
         .report-container {
             margin-top: 50px;
@@ -16,6 +19,13 @@
         .report-header {
             text-align: center;
             margin-bottom: 30px;
+        }
+        .graph-container {
+            margin-top: 50px;
+            background-color: #1e1e1e; /* Match dark mode */
+            border: 1px solid #444;
+            padding: 20px;
+            border-radius: 10px;
         }
         .report-table {
             width: 100%;
@@ -50,6 +60,10 @@
         .text-danger {
             color: #dc3545;
         }
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -67,6 +81,9 @@
 
         NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 
+        StringBuilder labels = new StringBuilder("[");
+        StringBuilder salesData = new StringBuilder("[");
+
         try {
             getConnection();
             Statement stmt = con.createStatement();
@@ -79,20 +96,80 @@
 
             while (salesRst.next()) {
                 String orderDate = salesRst.getString(1) + "-" + salesRst.getString(2) + "-" + salesRst.getString(3);
-                String totalAmount = currFormat.format(salesRst.getDouble(4));
-                out.println("<tr><td>" + orderDate + "</td><td>" + totalAmount + "</td></tr>");
+                double totalAmount = salesRst.getDouble(4);
+
+                labels.append("\"").append(orderDate).append("\",");
+                salesData.append(totalAmount).append(",");
+
+                String formattedAmount = currFormat.format(totalAmount);
+                out.println("<tr><td>" + orderDate + "</td><td>" + formattedAmount + "</td></tr>");
             }
+
+            if (labels.length() > 1) labels.setLength(labels.length() - 1); // Remove trailing comma
+            if (salesData.length() > 1) salesData.setLength(salesData.length() - 1);
+
+            labels.append("]");
+            salesData.append("]");
+
             out.println("</table>");
         } catch (SQLException ex) {
             out.println("<p class=\"text-danger\">Error: " + ex.getMessage() + "</p>");
+        } finally {
+            closeConnection();
         }
     %>
 
+    <div class="graph-container">
+        <h2 class="report-header">Sales Report Graph</h2>
+        <canvas id="salesGraph"></canvas> <!-- Canvas for Chart.js -->
+        <script>
+            // Validate and parse JSP-generated data
+            const labels = <%= labels.toString() %>;
+            const data = <%= salesData.toString() %>;
+
+            // Render the bar chart
+            const ctx = document.getElementById('salesGraph').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Sales (USD)',
+                        data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Sales by Day'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+
     <h2 class="customer-header">Customer List</h2>
     <%
-        String customerSql = "SELECT customerId, firstName, lastName, email FROM Customer";
+        String customerSql = "SELECT customerId, firstName, lastName, email FROM customer";
 
         try {
+			getConnection();
+			Statement stmt = con.createStatement();
+    		stmt.execute("USE orders");
             PreparedStatement customerStmt = con.prepareStatement(customerSql);
             ResultSet customerRst = customerStmt.executeQuery();
 

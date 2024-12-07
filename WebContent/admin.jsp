@@ -74,6 +74,16 @@
 
 <div class="container report-container">
     <h1 class="report-header">Administrator Sales Report by Day</h1>
+    <!-- Existing sales report and customer list tables -->
+
+    <!-- Button for navigating to the Product Management Page -->
+    <div class="text-center mt-4">
+        <a href="manageProducts.jsp" class="btn btn-primary btn-lg">Manage Products</a>
+    </div>
+</div>
+
+<div class="container report-container">
+    <h1 class="report-header">Administrator Sales Report by Day</h1>
 
     <%
         String salesSql = "SELECT year(orderDate), month(orderDate), day(orderDate), SUM(totalAmount) " +

@@ -366,3 +366,213 @@ code, pre {
 .btn-group .btn-secondary:hover {
     background-color: #424242;
 }
+/* Manage Products Container */
+.manage-products-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 10px;
+    background-color: #121212; /* Darker background for dark mode */
+    color: #e0e0e0; /* Light text for readability */
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Form Inputs */
+.manage-products-container input[type="text"],
+.manage-products-container input[type="number"],
+.manage-products-container input[type="email"],
+.manage-products-container input[type="url"],
+.manage-products-container select,
+.manage-products-container textarea {
+    width: 100%;
+    background-color: #1e1e1e; /* Input background matches container */
+    color: #e0e0e0; /* Light text */
+    border: 1px solid #444; /* Dark mode border */
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Input Focus State */
+.manage-products-container input[type="text"]:focus,
+.manage-products-container input[type="number"]:focus,
+.manage-products-container input[type="email"]:focus,
+.manage-products-container input[type="url"]:focus,
+.manage-products-container select:focus,
+.manage-products-container textarea:focus {
+    border-color: #64b5f6; /* Highlight color for focused inputs */
+    background-color: #2e2e2e; /* Slightly lighter for focus */
+    outline: none;
+}
+
+/* Buttons */
+.manage-products-container .btn {
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #333; /* Dark button background */
+    color: #fff; /* Light button text */
+    border: 1px solid #444; /* Button border matches container */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Button Hover State */
+.manage-products-container .btn:hover {
+    background-color: #555; /* Lighter button background on hover */
+    color: #fff;
+}
+
+/* Specific Button Colors */
+.manage-products-container .btn-success {
+    background-color: #388e3c; /* Success green */
+    border-color: #2e7d32;
+}
+
+.manage-products-container .btn-success:hover {
+    background-color: #2e7d32;
+}
+
+.manage-products-container .btn-warning {
+    background-color: #ffa000; /* Warning orange */
+    border-color: #ff8f00;
+}
+
+.manage-products-container .btn-warning:hover {
+    background-color: #ff8f00;
+}
+
+.manage-products-container .btn-danger {
+    background-color: #d32f2f; /* Danger red */
+    border-color: #c62828;
+}
+
+.manage-products-container .btn-danger:hover {
+    background-color: #c62828;
+}
+
+/* Form Labels */
+.manage-products-container label {
+    color: #e0e0e0; /* Ensure labels are readable in dark mode */
+}
+
+/* Debugging Styles */
+body.darkmode .manage-products-container {
+    outline: 2px solid yellow; /* TEMPORARY: To verify dark mode styling is applied */
+}
+
+/* Container for manage products */
+.manage-products-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+/* Labels */
+.manage-products-container label {
+    color: #e0e0e0;
+}
+
+/* Input Fields */
+.manage-products-container input[type="text"],
+.manage-products-container input[type="number"],
+.manage-products-container select,
+.manage-products-container textarea,
+.manage-products-container input[type="file"] {
+    width: 100%;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Focused Input Fields */
+.manage-products-container input[type="text"]:focus,
+.manage-products-container input[type="number"]:focus,
+.manage-products-container select:focus,
+.manage-products-container textarea:focus,
+.manage-products-container input[type="file"]:focus {
+    border-color: #64b5f6;
+    background-color: #2e2e2e;
+    outline: none;
+}
+
+/* File Input Styling */
+.manage-products-container input[type="file"] {
+    padding: 5px;
+    color: #e0e0e0;
+}
+
+/* File Input Hover */
+.manage-products-container input[type="file"]::-webkit-file-upload-button {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* File Input Button Hover State */
+.manage-products-container input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+/* Buttons */
+.manage-products-container .btn {
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Button Hover */
+.manage-products-container .btn:hover {
+    background-color: #555;
+}
+
+/* Success Button */
+.manage-products-container .btn-success {
+    background-color: #388e3c;
+    border-color: #2e7d32;
+}
+
+.manage-products-container .btn-success:hover {
+    background-color: #2e7d32;
+}
+
+/* Warning Button */
+.manage-products-container .btn-warning {
+    background-color: #ffa000;
+    border-color: #ff8f00;
+}
+
+.manage-products-container .btn-warning:hover {
+    background-color: #ff8f00;
+}
+
+/* Danger Button */
+.manage-products-container .btn-danger {
+    background-color: #d32f2f;
+    border-color: #c62828;
+}
+
+.manage-products-container .btn-danger:hover {
+    background-color: #c62828;
+}

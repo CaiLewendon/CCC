@@ -1,7 +1,8 @@
 <%@ page import="java.sql.*" %>
-<%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="javax.servlet.http.Part" %>
+<%@ page import="java.io.File" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +13,10 @@
             max-width: 900px;
             margin: 50px auto;
             padding: 20px;
-            border: 1px solid #444; /* Subtle dark border */
+            border: 1px solid #444;
             border-radius: 10px;
-            background-color: #1e1e1e; /* Dark background */
-            color: #e0e0e0; /* Light text for readability */
+            background-color: #1e1e1e;
+            color: #e0e0e0;
         }
 
         .form-group {
@@ -70,7 +71,7 @@
     <!-- Add Product -->
     <div class="form-section">
         <h2>Add Product</h2>
-        <form method="post" action="manageProducts.jsp">
+        <form method="post" action="manageProducts.jsp" enctype="multipart/form-data">
             <input type="hidden" name="action" value="add">
             <div class="form-group">
                 <label for="addProductName">Product Name:</label>
@@ -88,6 +89,10 @@
                 <label for="addProductDesc">Product Description:</label>
                 <textarea name="productDesc" id="addProductDesc" class="form-control" required></textarea>
             </div>
+            <div class="form-group">
+                <label for="addProductImage">Product Image:</label>
+                <input type="file" name="productImage" id="addProductImage" class="form-control" accept=".jpg,.png,.webp">
+            </div>
             <button type="submit" class="btn btn-success">Add Product</button>
         </form>
     </div>
@@ -95,7 +100,7 @@
     <!-- Update Product -->
     <div class="form-section">
         <h2>Update Product</h2>
-        <form method="post" action="manageProducts.jsp">
+        <form method="post" action="manageProducts.jsp" enctype="multipart/form-data">
             <input type="hidden" name="action" value="update">
             <div class="form-group">
                 <label for="updateProductId">Product ID:</label>
@@ -116,6 +121,10 @@
             <div class="form-group">
                 <label for="updateProductDesc">Product Description (leave blank to keep current):</label>
                 <textarea name="productDesc" id="updateProductDesc" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="updateProductImage">Product Image (optional):</label>
+                <input type="file" name="productImage" id="updateProductImage" class="form-control" accept=".jpg,.png,.webp">
             </div>
             <button type="submit" class="btn btn-warning">Update Product</button>
         </form>
@@ -148,13 +157,26 @@
                 double price = Double.parseDouble(request.getParameter("productPrice"));
                 int categoryId = Integer.parseInt(request.getParameter("categoryId"));
                 String desc = request.getParameter("productDesc");
+                Part filePart = request.getPart("productImage");
+
+                String imageFileName = null;
+                if (filePart != null && filePart.getSize() > 0) {
+                    imageFileName = new File(filePart.getSubmittedFileName()).getName();
+                    String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
+                    File uploadDir = new File(uploadPath);
+                    if (!uploadDir.exists()) {
+                        uploadDir.mkdirs();
+                    }
+                    filePart.write(uploadPath + File.separator + imageFileName);
+                }
 
                 PreparedStatement stmt = con.prepareStatement(
-                        "INSERT INTO product (productName, productPrice, categoryId, productDesc) VALUES (?, ?, ?, ?)");
+                        "INSERT INTO product (productName, productPrice, categoryId, productDesc, productImageURL) VALUES (?, ?, ?, ?, ?)");
                 stmt.setString(1, name);
                 stmt.setDouble(2, price);
                 stmt.setInt(3, categoryId);
                 stmt.setString(4, desc);
+                stmt.setString(5, imageFileName != null ? "uploads/" + imageFileName : null);
                 stmt.executeUpdate();
                 out.println("<div class='alert alert-success'>Product added successfully!</div>");
             } else if ("update".equalsIgnoreCase(action)) {
@@ -163,6 +185,7 @@
                 String price = request.getParameter("productPrice");
                 String categoryId = request.getParameter("categoryId");
                 String desc = request.getParameter("productDesc");
+                Part filePart = request.getPart("productImage");
 
                 StringBuilder sql = new StringBuilder("UPDATE product SET ");
                 List<Object> params = new ArrayList<>();
@@ -181,6 +204,17 @@
                 if (desc != null && !desc.isEmpty()) {
                     sql.append("productDesc = ?, ");
                     params.add(desc);
+                }
+                if (filePart != null && filePart.getSize() > 0) {
+                    String imageFileName = new File(filePart.getSubmittedFileName()).getName();
+                    String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
+                    File uploadDir = new File(uploadPath);
+                    if (!uploadDir.exists()) {
+                        uploadDir.mkdirs();
+                    }
+                    filePart.write(uploadPath + File.separator + imageFileName);
+                    sql.append("productImageURL = ?, ");
+                    params.add("uploads/" + imageFileName);
                 }
 
                 sql.setLength(sql.length() - 2); // Remove trailing comma
